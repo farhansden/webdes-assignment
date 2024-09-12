@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Interactive Landing Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            margin-bottom: 2rem;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .link {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Name</h1>
+        <div class="links">
+            <a href="#" class="link" data-color="#ff6b6b">Website</a>
+            <a href="#" class="link" data-color="#4ecdc4">Blog</a>
+            <a href="#" class="link" data-color="#45aaf2">Twitter</a>
+            <a href="#" class="link" data-color="#a55eea">Instagram</a>
+            <a href="#" class="link" data-color="#26de81">GitHub</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const color = link.getAttribute('data-color');
+                link.style.backgroundColor = color;
+            });
+
+            link.addEventListener('mouseout', () => {
+                link.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            });
+
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                link.classList.add('clicked');
+                setTimeout(() => {
+                    link.classList.remove('clicked');
+                    window.location.href = link.href;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
